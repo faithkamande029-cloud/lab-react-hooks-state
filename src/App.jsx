@@ -5,10 +5,17 @@ import Cart from './components/Cart'
 
 const App = () => {
   // TODO: Implement state for dark mode toggle
+  const [darkmode, setDarkMode] = useState(false)
 
   // TODO: Implement state for cart management
+  const [cart, setCart] = useState([])
 
   // TODO: Implement state for category filtering
+  const [category, setCategory] = useState("all")
+
+  const addToCart = (product) => {
+    setCart([...cart, product])
+  }
 
   return (
     <div>
@@ -19,18 +26,31 @@ const App = () => {
       </p>
 
       {/* TODO: Render DarkModeToggle and implement dark mode functionality */}
+      <DarkModeToggle 
+        darkMode={darkmode}
+        setDarkMode={setDarkMode}
+      />      
 
       {/* TODO: Implement category filter dropdown */}
       <label>Filter by Category: </label>
-      <select>
+      <select
+        value={category}
+        onChange={(e) => setCategory(e.target.value)}
+      >        
+        
         <option value="all">All</option>
         <option value="Fruits">Fruits</option>
         <option value="Dairy">Dairy</option>
       </select>
 
-      <ProductList />
+      <ProductList 
+        category={category} 
+        addToCart={addToCart}
+      />
 
       {/* TODO: Implement and render Cart component */}
+      <Cart cart={cart} />
+
     </div>
   )
 }

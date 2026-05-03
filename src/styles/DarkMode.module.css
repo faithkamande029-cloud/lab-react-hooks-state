@@ -1,3 +1,11 @@
 /* TODO (optional): Define styles for dark mode */
+.app.light {
+    background: white;
+    color: black;
+}
 
 /* TODO (optional): Ensure text and background colors adjust for dark mode */
+.app.dark {
+    background: #121212;
+    color: white;
+}
